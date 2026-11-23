@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Form POST Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Form Input Method POST</h2>
+
+        <form method="POST" action="/form-post">
+            <label for="nama_pengguna">Masukkan Nama:</label>
+            <input type="text" id="nama_pengguna" name="nama_pengguna" placeholder="Contoh: Dudi">
+            <button type="submit">Kirim Data</button>
+        </form>
+
+        {% if pesan_error %}
+            <p class="error">{{ pesan_error }}</p>
+        {% endif %}
+
+        {% if hasil %}
+            <div class="hasil">
+                <strong>Hasil Parsing POST:</strong>
+                <p>{{ hasil }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
