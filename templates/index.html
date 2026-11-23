@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Form POST Flask</title>
+    <title>Form POST Flask + SQLite</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
@@ -24,6 +24,30 @@
                 <strong>Hasil Parsing POST:</strong>
                 <p>{{ hasil }}</p>
             </div>
+        {% endif %}
+
+        <h3>Data Tersimpan di SQLite</h3>
+        {% if daftar_data %}
+            <table border="1" cellpadding="6" cellspacing="0" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nama</th>
+                        <th>Waktu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in daftar_data %}
+                    <tr>
+                        <td>{{ row["id"] }}</td>
+                        <td>{{ row["nama"] }}</td>
+                        <td>{{ row["waktu_input"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Belum ada data di database.</p>
         {% endif %}
     </div>
 </body>
